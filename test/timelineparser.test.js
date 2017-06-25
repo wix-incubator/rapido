@@ -28,7 +28,7 @@ describe('Timeline parser', () => {
     it('should parse a V8Compile event correctly', () => {
       const parsedEvent = Parser.parseV8Compile(v8Compile)
       expect(parsedEvent).to.have.property('name', 'V8Compile')
-      expect(parsedEvent).to.have.property('duration', v8Compile.dur)
+      expect(parsedEvent).to.have.property('duration', v8Compile.dur / 1000)
       expect(parsedEvent).to.have.property('script', 'hotjar-147814.js')
       expect(parsedEvent).to.have.property('path', '/c')
       expect(parsedEvent).to.have.property('fullURL', 'https://static.hotjar.com/c/hotjar-147814.js?sv=5')

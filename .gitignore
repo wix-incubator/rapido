@@ -60,5 +60,4 @@ typings/
 .env
 
 # Testing files
-timeline.json
 example.js
