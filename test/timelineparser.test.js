@@ -1,12 +1,12 @@
 /* eslint-env mocha */
 const { expect } = require('chai')
 const { evaluateScript, v8Compile, resourceSendRequest, resourceReceiveResponse } = require('./fixtures').events
-const Parser = require('../lib/parser')
+const { TimelineParser } = require('../lib/parser')
 
 describe('Timeline parser', () => {
   describe('EvaluateScript', () => {
     it('should parse an EvaluateScript event correctly', () => {
-      const parsedEvent = Parser.parseEvaluateScript(evaluateScript)
+      const parsedEvent = TimelineParser.parseEvaluateScript(evaluateScript)
       expect(parsedEvent).to.have.property('name', 'EvaluateScript')
       expect(parsedEvent).to.have.property('duration', evaluateScript.dur / 1000)
       expect(parsedEvent).to.have.property('script', 'jquery.min.js')
@@ -15,7 +15,7 @@ describe('Timeline parser', () => {
     })
 
     it('shouldn\'t parse a non-EvaluateScript event', () => {
-      const nonParsedEvent = Parser.parseEvaluateScript({})
+      const nonParsedEvent = TimelineParser.parseEvaluateScript({})
       expect(nonParsedEvent).to.have.property('name', 'EvaluateScript')
       expect(nonParsedEvent).to.have.property('duration', -1)
       expect(nonParsedEvent).to.have.property('script', '')
@@ -26,7 +26,7 @@ describe('Timeline parser', () => {
 
   describe('V8Compile', () => {
     it('should parse a V8Compile event correctly', () => {
-      const parsedEvent = Parser.parseV8Compile(v8Compile)
+      const parsedEvent = TimelineParser.parseV8Compile(v8Compile)
       expect(parsedEvent).to.have.property('name', 'V8Compile')
       expect(parsedEvent).to.have.property('duration', v8Compile.dur / 1000)
       expect(parsedEvent).to.have.property('script', 'hotjar-147814.js')
@@ -35,7 +35,7 @@ describe('Timeline parser', () => {
     })
 
     it('shouldn\'t parse a non-V8Compile event', () => {
-      const nonParsedEvent = Parser.parseV8Compile({})
+      const nonParsedEvent = TimelineParser.parseV8Compile({})
       expect(nonParsedEvent).to.have.property('name', 'V8Compile')
       expect(nonParsedEvent).to.have.property('duration', -1)
       expect(nonParsedEvent).to.have.property('script', '')
@@ -46,7 +46,7 @@ describe('Timeline parser', () => {
 
   describe('ResourceSendRequest', () => {
     it('should parse a ResourceSendRequest event correctly', () => {
-      const parsedEvent = Parser.parseResourceSendRequest(resourceSendRequest)
+      const parsedEvent = TimelineParser.parseResourceSendRequest(resourceSendRequest)
       expect(parsedEvent).to.have.property('name', 'ResourceSendRequest')
       expect(parsedEvent).to.have.property('method', 'GET')
       expect(parsedEvent).to.have.property('priority', 'VeryHigh')
@@ -55,7 +55,7 @@ describe('Timeline parser', () => {
     })
 
     it('shouldn\'t parse a non-ResourceSendRequest event', () => {
-      const nonParsedEvent = Parser.parseResourceSendRequest({})
+      const nonParsedEvent = TimelineParser.parseResourceSendRequest({})
       expect(nonParsedEvent).to.have.property('name', 'ResourceSendRequest')
       expect(nonParsedEvent).to.have.property('method', '')
       expect(nonParsedEvent).to.have.property('priority', '')
@@ -66,7 +66,7 @@ describe('Timeline parser', () => {
 
   describe('ResourceReceiveResponse', () => {
     it('should parse a ResourceReceiveResponse event correctly', () => {
-      const parsedEvent = Parser.parseResourceReceiveResponse(resourceReceiveResponse)
+      const parsedEvent = TimelineParser.parseResourceReceiveResponse(resourceReceiveResponse)
       expect(parsedEvent).to.have.property('name', 'ResourceReceiveResponse')
       expect(parsedEvent).to.have.property('encodedLength', 135)
       expect(parsedEvent).to.have.property('fromCache', false)
@@ -77,7 +77,7 @@ describe('Timeline parser', () => {
     })
 
     it('shouldn\'t parse a non-ResourceReceiveResponse event', () => {
-      const nonParsedEvent = Parser.parseResourceReceiveResponse({})
+      const nonParsedEvent = TimelineParser.parseResourceReceiveResponse({})
       expect(nonParsedEvent).to.have.property('name', 'ResourceReceiveResponse')
       expect(nonParsedEvent).to.have.property('encodedLength', -1)
       expect(nonParsedEvent).to.have.property('fromCache', false)
@@ -87,4 +87,6 @@ describe('Timeline parser', () => {
       expect(nonParsedEvent).to.have.property('statusCode', -1)
     })
   })
+
+  describe('Full timeline parser', () => {})
 })
