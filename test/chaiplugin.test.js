@@ -15,6 +15,12 @@ describe('Chai plugin', () => {
     })
   })
 
+  it('should correctly check for data without duration checking', () => {
+    expect('jquery.min.js').to.load()
+    expect('jquery.min.js').to.evaluate()
+    expect('jquery.min.js').to.compile()
+  })
+
   it('should correcly check load data', () => {
     expect('jquery.min.js').to.load.under(150)
   })
