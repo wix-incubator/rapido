@@ -22,7 +22,7 @@ describe('Chai plugin', () => {
   })
 
   it('should correcly check load data', () => {
-    expect('jquery.min.js').to.load.under(150)
+    expect('jquery.min.js').to.load.under(500)
   })
 
   it('should correctly check evaluation data', () => {

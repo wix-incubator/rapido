@@ -6,7 +6,7 @@ describe('Full browser', function () {
   this.timeout(5 * 1000)
 
   it('should return correct stats', () => {
-    return Zariz.load('http://wix.com').then(client => {
+    return Zariz.load('http://jonathano.com/test-page.html').then(client => {
       return client.startTracing({ isOnLoad: true })
     }).then(client => {
       return client.endTracing()
