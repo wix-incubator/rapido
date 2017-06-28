@@ -1,3 +1,5 @@
+const Zariz = require('../lib')
+
 const evaluateScript = {
   pid: 27839,
   tid: 775,
@@ -98,6 +100,16 @@ const resourceReceiveResponse = {
   s: 't'
 }
 
+const getSiteData = url => {
+  return Zariz.load(url).then(client => {
+    return client.startTracing({ isOnLoad: true })
+  }).then(client => {
+    return client.endTracing()
+  }).then(() => {
+    return { timeline: Zariz.timeline, networkEvents: Zariz.networkEvents }
+  })
+}
+
 module.exports = {
   events: {
     array: [evaluateScript, v8Compile, resourceSendRequest, resourceReceiveResponse],
@@ -105,5 +117,6 @@ module.exports = {
     v8Compile,
     resourceSendRequest,
     resourceReceiveResponse
-  }
+  },
+  getSiteData
 }

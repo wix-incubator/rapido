@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 const chai = require('chai')
-const getTimeline = require('../lib')
-const chaiZariz = require('../lib/chai-plugin')
+const { chaiZariz } = require('../lib')
+const { getSiteData } = require('./fixtures')
 
 chai.use(chaiZariz.plugin)
 const { expect } = chai
@@ -9,8 +9,7 @@ const { expect } = chai
 describe('Chai plugin', () => {
   // Ugly code because of scopes ugh
   before(function (done) {
-    getTimeline({ url: 'http://jonathano.com/test-page.html' }).then(({ timeline, networkEvents }) => {
-      console.log(networkEvents)
+    getSiteData('http://jonathano.com/test-page.html').then(({ timeline, networkEvents }) => {
       chaiZariz.timeline = timeline
       done()
     })
