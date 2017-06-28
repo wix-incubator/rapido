@@ -32,5 +32,9 @@ describe('Chai plugin', () => {
   it('should correctly check compilation data', () => {
     expect('jquery.min.js').to.compile.under(10)
   })
+
+  it('should act the same way as .below without Zariz', () => {
+    expect(4).to.be.under(5)
+  })
 })
 
