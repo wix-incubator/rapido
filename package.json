@@ -1,34 +1,40 @@
 {
   "name": "zariz",
   "version": "1.0.0",
-  "description": "A front-end performance test kit built using the Chrome DevTools protocol",
+  "description": "A site performance test kit, built using Chrome's DevTools.",
   "main": "lib/index.js",
-  "scripts": {
-    "test": "mocha --reporter mocha-env-reporter"
-  },
-  "keywords": [
-    "performance",
-    "testkit",
-    "zariz",
-    "devtools"
-  ],
   "engines": {
     "node": ">=6"
   },
-  "author": "Jonathan Ohayon <jonathano@wix.com>",
-  "license": "MIT",
   "dependencies": {
     "chrome-launcher": "^0.2.1",
-    "chrome-remote-interface": "^0.23.2"
+    "chrome-remote-interface": "^0.23.3"
   },
   "devDependencies": {
     "chai": "^4.0.2",
-    "eslint": "^4.1.0",
+    "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "mocha-env-reporter": "^2.0.4"
-  }
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonohayon/zariz.git"
+  },
+  "keywords": [
+    "performance",
+    "speed"
+  ],
+  "author": "Jonathan Ohayon <jonathano@wix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonohayon/zariz/issues"
+  },
+  "homepage": "https://github.com/jonohayon/zariz#readme"
 }
