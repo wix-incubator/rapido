@@ -1,9 +1,8 @@
 /* eslint-env mocha */
 const chai = require('chai')
 const Zariz = require('../lib')
-const { chaiZariz } = Zariz
 
-chai.use(chaiZariz)
+chai.use(Zariz.chaiPlugin)
 const { expect } = chai
 
 describe('Chai plugin', () => {
