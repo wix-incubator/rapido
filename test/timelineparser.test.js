@@ -87,6 +87,4 @@ describe('Timeline parser', () => {
       expect(nonParsedEvent).to.have.property('statusCode', -1)
     })
   })
-
-  describe('Full timeline parser', () => {})
 })

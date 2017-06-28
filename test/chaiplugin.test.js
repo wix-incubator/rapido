@@ -8,10 +8,9 @@ const { expect } = chai
 
 describe('Chai plugin', () => {
   // Ugly code because of scopes ugh
-  before(function (done) {
-    getSiteData('http://jonathano.com/test-page.html').then(({ timeline, networkEvents }) => {
+  before(() => {
+    return getSiteData('http://jonathano.com/test-page.html').then(({ timeline, networkEvents }) => {
       chaiZariz.timeline = timeline
-      done()
     })
   })
 
