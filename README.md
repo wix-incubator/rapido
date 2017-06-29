@@ -78,7 +78,7 @@ describe('Load performance testing', () => {
 ```
 
 ## Connecting to an open Chrome instance
-You can connect to an alreadu open Chrome instance by supplying a port to the `Zariz.load` function's configuration object:
+You can connect to an already open Chrome instance by supplying a port to the `Zariz.load` function's configuration object:
 ```javascript
 Zariz.load('http://example.com', { port: 9222 })
 ```
