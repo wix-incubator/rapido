@@ -90,9 +90,9 @@ Zariz.load('http://example.com', { port: 9222, pid: 86956 })
 ## API
 ### Library
 ```js
-Zariz.load(url, { port })
+Zariz.load(url, { port, pid })
 ```
-Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`. This function also accepts a configuration object with an option to connect to an already open Chrome instacne, provided its remote debugging port.
+Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`. This function also accepts a configuration object with an option to connect to an already open Chrome instacne, provided its remote debugging port (and optionally, its pid).
 
 ```js
 Zariz.loadTimeOf(resource)
