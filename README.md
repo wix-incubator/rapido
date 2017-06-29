@@ -88,6 +88,7 @@ Zariz.load('http://example.com', { port: 9222, pid: 86956 })
 ```
 
 ## API
+*Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although I plan on adding CSS support in the future.*
 ### Library
 ```js
 Zariz.load(url, { port, pid })
@@ -133,7 +134,6 @@ expect(url || filename).to.evaluate()
 expect(url || filename).to.compile()
 ```
 Expects the url / filename to be evaluated or compiled, without testing the time these operations take.<br />
-*Note - this method only supports JavaScript files at the moment, although I plan on adding CSS support in the future.*
 
 ```js
 expect(url || filename).to.load.under(ms)
