@@ -77,12 +77,29 @@ describe('Load performance testing', () => {
 })
 ```
 
+## Connecting to an open Chrome instance
+You can connect to an alreadu open Chrome instance by supplying a port to the `Zariz.load` function's configuration object:
+```javascript
+Zariz.load('http://example.com', { port: 9222 })
+```
+But beware! Without supplying the pid of the Chrome instance it will be left open after Zariz is done using it. You can provide it in the configuration object too:
+```javascript
+Zariz.load('http://example.com', { port: 9222, pid: 86956 })
+```
+
 ## API
 ### Library
 ```js
-Zariz.load(url)
+Zariz.load(url, { port })
 ```
-Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`.
+Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`. This function also accepts a configuration object with an option to connect to an already open Chrome instacne, provided its remote debugging port.
+
+```js
+Zariz.loadTimeOf(resource)
+Zariz.evaluationTimeOf(script)
+Zariz.compilationTimeOf(script)
+```
+Returns the load / evaluation / compilation time of a resource / a script.
 
 ```js
 client.startTracing({ isOnLoad = true })
@@ -128,8 +145,7 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
 ## TODO
  - [x] Trace the browser's timeline
  - [x] Get the duration of network events
+ - [x] Add a function to get a file's time easily
+ - [x] Add an option to connect to an already launched Chrome instance
  - [ ] Add support to get file size from the network events
- - [ ] Add a function to get a file's time easily
- - [ ] Add an option to use Zariz on the frontend
- - [ ] Add an option to connect to an already launched Chrome instance
  - [ ] Add support for CSS parsing
