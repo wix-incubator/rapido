@@ -18,14 +18,16 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "wnpm-ci": "^6.2.46"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "release": "wnpm-release --no-shrinkwrap"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonohayon/rapido.git"
+    "url": "git+https://github.com/wix/rapido.git"
   },
   "keywords": [
     "performance",
@@ -34,7 +36,10 @@
   "author": "Jonathan Ohayon <jonathano@wix.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jonohayon/rapido/issues"
+    "url": "https://github.com/wix/rapido/issues"
   },
-  "homepage": "https://github.com/jonohayon/rapido#readme"
+  "homepage": "https://github.com/wix/rapido#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
