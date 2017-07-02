@@ -1,5 +1,5 @@
 {
-  "name": "zariz",
+  "name": "rapidojs",
   "version": "1.0.0",
   "description": "A site performance test kit, built using Chrome's DevTools.",
   "main": "lib/index.js",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonohayon/zariz.git"
+    "url": "git+https://github.com/jonohayon/rapido.git"
   },
   "keywords": [
     "performance",
@@ -34,7 +34,7 @@
   "author": "Jonathan Ohayon <jonathano@wix.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jonohayon/zariz/issues"
+    "url": "https://github.com/jonohayon/rapido/issues"
   },
-  "homepage": "https://github.com/jonohayon/zariz#readme"
+  "homepage": "https://github.com/jonohayon/rapido#readme"
 }

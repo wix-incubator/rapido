@@ -1,5 +1,5 @@
 <h1 align="center">
-  Zariz
+  Rapido
 </h1>
 
 > A site performance test kit, built using Chrome's DevTools.
@@ -12,17 +12,17 @@
 
 ## Install
 ```bash
-npm install --save-dev zariz
+npm install --save-dev rapidojs
 ```
 
 ## Example usage
 Without the chai plugin:
 ```javascript
-const Zariz = require('zariz')
+const Rapido = require('rapido')
 const path = require('path')
 const fs = require('fs')
 
-Zariz.load(url).then(client => {
+Rapido.load(url).then(client => {
   return client.startTracing()
 }).then(client => {
   return client.endTracing()
@@ -36,22 +36,22 @@ Zariz.load(url).then(client => {
 With the chai plugin:
 ```javascript
 const chai = require('chai')
-const Zariz = require('zariz')
+const Rapido = require('Rapido')
 
-chai.use(Zariz.chaiPlugin)
+chai.use(Rapido.chaiPlugin)
 
 /**
  * If chaiPlugin is too much of a generic name for
  * you and you like deconstruction, this is also doable:
  */
-const { chaiZariz } = Zariz
-chai.use(chaiZariz)
+const { rapidoChai } = Rapido
+chai.use(rapidoChai)
 
 const { expect } = chai
 
 describe('Load performance testing', () => {
   before(() => {
-    return Zariz.load('http://example.com').then(client => {
+    return Rapido.load('http://example.com').then(client => {
       return client.startTracing()
     }).then(client => {
       return client.endTracing()
@@ -78,34 +78,34 @@ describe('Load performance testing', () => {
 ```
 
 ## Connecting to an open Chrome instance
-You can connect to an already open Chrome instance by supplying a port to the `Zariz.load` function's configuration object:
+You can connect to an already open Chrome instance by supplying a port to the `Rapido.load` function's configuration object:
 ```javascript
-Zariz.load('http://example.com', { port: 9222 })
+Rapido.load('http://example.com', { port: 9222 })
 ```
-But beware! Without supplying the pid of the Chrome instance it will be left open after Zariz is done using it. You can provide it in the configuration object too:
+But beware! Without supplying the pid of the Chrome instance it will be left open after Rapido is done using it. You can provide it in the configuration object too:
 ```javascript
-Zariz.load('http://example.com', { port: 9222, pid: 86956 })
+Rapido.load('http://example.com', { port: 9222, pid: 86956 })
 ```
 
 ## API
 *Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although I plan on adding CSS support in the future.*
 ### Library
 ```js
-Zariz.load(url, { port, pid })
+Rapido.load(url, { port, pid })
 ```
 Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`. This function also accepts a configuration object with an option to connect to an already open Chrome instacne, provided its remote debugging port (and optionally, its pid).
 
 ```js
-Zariz.loadTimeOf(resource)
-Zariz.evaluationTimeOf(script)
-Zariz.compilationTimeOf(script)
+Rapido.loadTimeOf(resource)
+Rapido.evaluationTimeOf(script)
+Rapido.compilationTimeOf(script)
 ```
 Returns the load / evaluation / compilation time of a resource / a script.
 
 ```js
 client.startTracing({ isOnLoad = true })
 ```
-Starts tracing the browser's timeline. Receives a parameter called isOnLoad which is meant to indicate to Zariz whether this is being called straight after the `.load` call or not, which defaults to `true`. Returns a `Promise` an object with a function called `endTracing`.
+Starts tracing the browser's timeline. Receives a parameter called isOnLoad which is meant to indicate to Rapido whether this is being called straight after the `.load` call or not, which defaults to `true`. Returns a `Promise` an object with a function called `endTracing`.
 
 ```js
 client.endTracing()
@@ -113,12 +113,12 @@ client.endTracing()
 Ends tracing the browser's timeline. Returns a `Promise` with an object with the timline and the network arrays.
 
 ```js
-Zariz.timeline
+Rapido.timeline
 ```
 The script timeline events (evaluation and compilation).
 
 ```js
-Zariz.network
+Rapido.network
 ```
 The network events.
 
@@ -149,3 +149,4 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
  - [x] Add an option to connect to an already launched Chrome instance
  - [ ] Add support to get file size from the network events
  - [ ] Add support for CSS parsing
+ - [ ] Add support to get webpack bundle size

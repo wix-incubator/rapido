@@ -1,13 +1,13 @@
 /* eslint-env mocha */
 const chromeLauncher = require('chrome-launcher')
 const { expect } = require('chai')
-const Zariz = require('../lib')
+const Rapido = require('../lib')
 
 describe('Full browser', function () {
   this.timeout(5 * 1000)
 
   it('should return correct stats', () => {
-    return Zariz.load('http://jonathano.com/test-page.html').then(client => {
+    return Rapido.load('http://jonathano.com/test-page.html').then(client => {
       return client.startTracing({ isOnLoad: true })
     }).then(client => {
       return client.endTracing()
@@ -20,9 +20,9 @@ describe('Full browser', function () {
   })
 
   it('should return the script\'s evaluation time', () => {
-    const loadTime = Zariz.loadTimeOf('jquery.min.js')
-    const evalTime = Zariz.evaluationTimeOf('jquery.min.js')
-    const compileTime = Zariz.compilationTimeOf('jquery.min.js')
+    const loadTime = Rapido.loadTimeOf('jquery.min.js')
+    const evalTime = Rapido.evaluationTimeOf('jquery.min.js')
+    const compileTime = Rapido.compilationTimeOf('jquery.min.js')
     expect(loadTime).to.be.a('number')
     expect(evalTime).to.be.a('number')
     expect(compileTime).to.be.a('number')
@@ -32,14 +32,14 @@ describe('Full browser', function () {
     return chromeLauncher.launch({
       chromeFlags: ['--headless']
     }).then(({ port, pid }) => {
-      return Zariz.load('http://jonathano.com/test-page.html', { port, pid })
+      return Rapido.load('http://jonathano.com/test-page.html', { port, pid })
     }).then(client => {
       return client.startTracing({ isOnLoad: true })
     }).then(client => {
       return client.endTracing()
     }).then(() => {
-      expect(Zariz.timeline).to.exist
-      expect(Zariz.network).to.exist
+      expect(Rapido.timeline).to.exist
+      expect(Rapido.network).to.exist
     })
   })
 })

@@ -1,13 +1,13 @@
 /* eslint-env mocha */
 const chai = require('chai')
-const Zariz = require('../lib')
+const Rapido = require('../lib')
 
-chai.use(Zariz.chaiPlugin)
+chai.use(Rapido.chaiPlugin)
 const { expect } = chai
 
 describe('Chai plugin', () => {
   before(() => {
-    return Zariz.load('http://jonathano.com/test-page.html').then(client => {
+    return Rapido.load('http://jonathano.com/test-page.html').then(client => {
       return client.startTracing({ isOnLoad: true })
     }).then(client => {
       return client.endTracing()
@@ -32,8 +32,7 @@ describe('Chai plugin', () => {
     expect('jquery.min.js').to.compile.under(10)
   })
 
-  it('should act the same way as .below without Zariz', () => {
+  it('should act the same way as .below without rapido', () => {
     expect(4).to.be.under(5)
   })
 })
-
