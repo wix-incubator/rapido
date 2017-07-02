@@ -77,6 +77,34 @@ describe('Load performance testing', () => {
 })
 ```
 
+With Selenium WebDriver:
+```javascript
+const { Builder, Capabilities, By } = require('selenium-webdriver')
+const Rapido = require('rapidojs')
+
+const driver = new Builder()
+  .withCapabilities(Capabilities.chrome())
+  .build()
+
+Rapido.getSeleniumPort(driver).then(port => {
+  return Promise.all([port, driver.get('http://example.com')]) // Pass the port to Rapido
+}).then(([port]) => {
+  return Rapido.load(driver, { port })
+}).then(client => {
+  return client.startTracing({ isOnLoad: false })
+}).then(client => {
+  return driver.findElement(By.id('open-modal')).click().then(() => {
+    return driver.findElement(By.id('search')).sendKeys('rapidojs')
+  }).then(() => {
+    return driver.wait(until.titleIs('rapidojs - search'), 1000)
+  }).then(() => {
+    return client.endTracing()
+  })
+}).then(() => {
+  // Rapido is now populated with timeline and network events!
+})
+```
+
 ## Connecting to an open Chrome instance
 You can connect to an already open Chrome instance by supplying a port to the `Rapido.load` function's configuration object:
 ```javascript
@@ -87,11 +115,26 @@ But beware! Without supplying the pid of the Chrome instance it will be left ope
 Rapido.load('http://example.com', { port: 9222, pid: 86956 })
 ```
 
+## Connecting to Selenium WebDriver
+You can connect to a Chrome that's using `selenium-web` like so:
+```javascript
+const driver = new selenium.Builder()
+  .withCapabilities(selenium.Capabilities.chrome())
+  .build()
+
+Rapido.getSeleniumPort(driver).then(port => {
+  return Promise.all([port, driver.get('http://example.com')])
+}).then(([port]) => {
+  // This line is populating the Rapido instance with the currently open tab's info
+  return Rapido.load(driver, { port })
+})
+```
+
 ## API
 *Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although CSS support is in the works.*
 ### Library
 ```js
-Rapido.load(url, { port, pid })
+Rapido.load(url | SeleniumWebDriver, { port, pid })
 ```
 Launches a new headless Chrome instance and loads the given url into it. Returns a `Promise` with an object with the remote debugging port of the new instance and a function, `startTracing`. This function also accepts a configuration object with an option to connect to an already open Chrome instacne, provided its remote debugging port (and optionally, its pid).
 
