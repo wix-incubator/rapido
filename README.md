@@ -18,7 +18,7 @@ npm install --save-dev rapidojs
 ## Example usage
 Without the chai plugin:
 ```javascript
-const Rapido = require('rapido')
+const Rapido = require('rapidojs')
 const path = require('path')
 const fs = require('fs')
 
@@ -36,7 +36,7 @@ Rapido.load(url).then(client => {
 With the chai plugin:
 ```javascript
 const chai = require('chai')
-const Rapido = require('Rapido')
+const Rapido = require('rapidojs')
 
 chai.use(Rapido.chaiPlugin)
 
