@@ -190,7 +190,7 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
  - [x] Get the duration of network events
  - [x] Add a function to get a file's time easily
  - [x] Add an option to connect to an already launched Chrome instance
+ - [x] Add Selenium WebDriver support
  - [ ] Add support to get file size from the network events
  - [ ] Add support for CSS parsing
  - [ ] Add support to get webpack bundle size
- - [ ] Add warmup stage (w/ Selenium WebDriver)
