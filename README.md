@@ -88,7 +88,7 @@ Rapido.load('http://example.com', { port: 9222, pid: 86956 })
 ```
 
 ## API
-*Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although I plan on adding CSS support in the future.*
+*Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although CSS support is in the works.*
 ### Library
 ```js
 Rapido.load(url, { port, pid })
@@ -150,3 +150,4 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
  - [ ] Add support to get file size from the network events
  - [ ] Add support for CSS parsing
  - [ ] Add support to get webpack bundle size
+ - [ ] Add warmup stage (with Selenium WebDriver)
