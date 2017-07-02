@@ -150,4 +150,4 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
  - [ ] Add support to get file size from the network events
  - [ ] Add support for CSS parsing
  - [ ] Add support to get webpack bundle size
- - [ ] Add warmup stage (with Selenium WebDriver)
+ - [ ] Add warmup stage (w/ Selenium WebDriver)

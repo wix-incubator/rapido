@@ -1,6 +1,6 @@
 {
   "name": "rapidojs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A site performance test kit, built using Chrome's DevTools.",
   "main": "lib/index.js",
   "engines": {
@@ -19,6 +19,7 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "selenium-webdriver": "^3.4.0",
     "wnpm-ci": "^6.2.46"
   },
   "scripts": {
