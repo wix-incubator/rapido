@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const { Builder, Capabilities, By: by, Key } = require('selenium-webdriver')
+const { Builder, Capabilities, By: by } = require('selenium-webdriver')
 const chai = require('chai')
 const Rapido = require('../lib')
 
