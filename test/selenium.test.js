@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-const { Builder, Capabilities } = require('selenium-webdriver')
+const { Builder, Capabilities, By: by, Key } = require('selenium-webdriver')
 const chai = require('chai')
 const Rapido = require('../lib')
 
@@ -18,16 +18,24 @@ describe('Selenium WebDriver integration', function () {
   it('should work with Selenium WebDriver', function () {
     const { driver } = this
     return Rapido.getSeleniumPort(driver).then(port => {
-      return Promise.all([port, driver.get('http://jonathano.com/test-page.html')])
+      return Promise.all([port, driver.get('https://jonathano.com/test-page.html')])
     }).then(([port]) => {
       return Rapido.load(driver, { port })
     }).then(client => {
       return client.startTracing({ isOnLoad: false })
-    }).then((client) => {
-      return client.endTracing()
+    }).then(client => {
+      return driver.findElement(by.css('button')).then(button => {
+        return button.click()
+      }).then(() => {
+        const reqDoneCheck = () => driver.getTitle().then(t => t.includes('|'))
+        return driver.wait(reqDoneCheck, 100, 'API request should have been done')
+      }).then(() => {
+        return client.endTracing()
+      })
     }).then(() => {
       expect(Rapido.timeline).to.have.length.above(0)
       expect(Rapido.network).to.have.length.above(0)
+      expect('https://jonathano.com/rapido-test-data').to.load.under(100)
     })
   })
 })
