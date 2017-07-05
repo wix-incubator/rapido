@@ -116,7 +116,7 @@ Rapido.load('http://example.com', { port: 9222, pid: 86956 })
 ```
 
 ## Connecting to Selenium WebDriver
-You can connect to a Chrome that's using `selenium-web` like so:
+You can connect to a Chrome instance that's connected to a Selenium WebDriver insatnce like so:
 ```javascript
 const driver = new selenium.Builder()
   .withCapabilities(selenium.Capabilities.chrome())
