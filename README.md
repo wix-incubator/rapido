@@ -131,8 +131,9 @@ Rapido.getSeleniumPort(driver).then(port => {
 ```
 
 ## API
-*Note - all of the methods regarding evaluation / compilation time support only JavaScript files at the moment, although CSS support is in the works.*
+*Note - all of the methods regarding evaluation / v8 compilation time support only JavaScript files at the moment, although CSS support is in the works.*
 ### Library
+#### Site performance
 ```js
 Rapido.load(url | SeleniumWebDriver, { port, pid })
 ```
@@ -165,25 +166,51 @@ Rapido.network
 ```
 The network events.
 
-### Chai plugin
-**IMPORTANT - The chai plugin cannot be used without loading the site in node!**
+#### Webpack configuration
 ```js
-expect(url || filename).to.load()
+Rapido.webpack
+```
+In order to use the webpack build features of Rapido, it is required to pass the webpack module to Rapido (required for multiple webpack version support).
+
+```js
+Rapido.runBuild(webpackConfig | webpackConfigPath)
+```
+Runs the webpack build with the specified webpack configuraation and returns a promise with a resolved object of the bundles (called assets), modules and chunks created during the build. Also, populates the assets, modules and chunks objects of the Rapido instance.
+
+```js
+Rapido.bundleSizeOf(name)
+```
+Returns the size in kb of the given bundle.
+
+```js
+Rapido.moduleSizeOf(name | url)
+```
+Returns the size in kb of the given module (searched by name or by path).
+
+### Chai plugin
+**IMPORTANT - The chai plugin cannot be used without loading the site / webpack config in node!**
+```js
+expect(url | filename).to.load()
 ```
 Expects the url / filename to load, without any testing of the load time.
 
 ```js
-expect(url || filename).to.evaluate()
-expect(url || filename).to.compile()
+expect(url | filename).to.evaluate()
+expect(url | filename).to.compile()
 ```
 Expects the url / filename to be evaluated or compiled, without testing the time these operations take.<br />
 
 ```js
-expect(url || filename).to.load.under(ms)
-expect(url || filename).to.evaluate.under(ms)
-expect(url || filename).to.compile.under(ms)
+expect(url | filename).to.load.under(ms)
+expect(url | filename).to.evaluate.under(ms)
+expect(url | filename).to.compile.under(ms)
 ```
 Expects the url/filename to load / evaluate / compile under the given amount of milliseconds.
+
+```js
+expect(path | filename).to.be.built()
+```
+Expectes the module on the path / with the given filename / module name to be built.
 
 ## TODO
  - [x] Trace the browser's timeline
@@ -191,6 +218,6 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
  - [x] Add a function to get a file's time easily
  - [x] Add an option to connect to an already launched Chrome instance
  - [x] Add Selenium WebDriver support
- - [ ] Add support to get webpack bundle size
+ - [x] Add support to get webpack bundle size
  - [ ] Add support to get file size from the network events
  - [ ] Add support for CSS parsing

@@ -40,19 +40,18 @@ describe('Webpack bundle size', function () {
     before(() => Rapido.runBuild(sampleConfig))
 
     it('should return the main bundle\'s size', () => {
-      const mainSize = Rapido.assetSize('main.bundle.js')
+      const mainSize = Rapido.bundleSizeOf('main.bundle.js')
       expect(mainSize).to.be.a('number')
       expect(mainSize).to.be.below(5)
     })
 
     it('should return the a.js module size', () => {
-      const ajsSize = Rapido.moduleSize('a.js')
+      const ajsSize = Rapido.moduleSizeOf('a.js')
       expect(ajsSize).to.be.a('number')
       expect(ajsSize).to.be.below(1)
     })
   })
 
-  // TODO - Add chai support
   describe('chai plugin integration', () => {
     it('should check the main bundle\'s size', () => {
       expect('main.bundle.js').to.be.built() // Checks in the assets array
