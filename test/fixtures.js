@@ -98,6 +98,47 @@ const resourceReceiveResponse = {
   s: 't'
 }
 
+const ajs = `
+  import _ from 'lodash'
+  // Just some sample functions
+  export default arr => {
+    const length = Array.isArray(arr) ? arr.length : arr
+    const newArr = (new Array(length)).fill()
+    return _(newArr)
+      .map((n, i) => i + 1)
+      .map(n => n ** 3)
+      .filter(n => n > 16)
+      .sum()
+  }
+`
+
+const bjs = `
+  import func from './a.js'
+  const length = 20
+  document.querySelector('#result').innerHTML = func(length)
+`
+
+const packageJson = JSON.stringify({
+  name: 'rapido-webpack-test',
+  version: '1.0.0',
+  main: 'b.js'
+}, null, 2)
+
+const sampleConfig = {
+  context: '/tmp/rapido-webpack',
+  entry: {
+    main: './b.js',
+    a: './a.js'
+  },
+  output: {
+    path: '/tmp/rapido-webpack/dist',
+    filename: '[name].bundle.js'
+  },
+  externals: {
+    lodash: '_'
+  }
+}
+
 module.exports = {
   events: {
     array: [evaluateScript, v8Compile, resourceSendRequest, resourceReceiveResponse],
@@ -105,5 +146,9 @@ module.exports = {
     v8Compile,
     resourceSendRequest,
     resourceReceiveResponse
-  }
+  },
+  ajs,
+  bjs,
+  sampleConfig,
+  packageJson
 }

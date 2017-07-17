@@ -1,6 +1,6 @@
 {
   "name": "rapidojs",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "A site performance test kit, built using Chrome's DevTools.",
   "main": "lib/index.js",
   "engines": {
@@ -19,11 +19,13 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "memory-fs": "^0.4.1",
     "selenium-webdriver": "^3.4.0",
+    "webpack": "^3.2.0",
     "wnpm-ci": "^6.2.46"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --timeout 5000",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "repository": {

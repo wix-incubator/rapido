@@ -3,9 +3,7 @@ const chromeLauncher = require('chrome-launcher')
 const { expect } = require('chai')
 const Rapido = require('../lib')
 
-describe('Full browser', function () {
-  this.timeout(5 * 1000)
-
+describe('Full browser', () => {
   it('should return correct stats', () => {
     return Rapido.load('http://jonathano.com/test-page.html').then(client => {
       return client.startTracing({ isOnLoad: true })
