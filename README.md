@@ -2,13 +2,13 @@
   Rapido
 </h1>
 
-> A site performance test kit, built using Chrome's DevTools.
-
 <p align="center">
   <a href="https://github.com/standard/standard" alt="JavaScript Style Guide">
     <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   </a>
 </p>
+
+> A site performance test kit, built using Chrome's DevTools.
 
 ## Features
  - Measures the load time of resources requested by the page
