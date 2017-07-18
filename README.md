@@ -4,6 +4,12 @@
 
 > A site performance test kit, built using Chrome's DevTools.
 
+<p align="center">
+  <a href="https://github.com/standard/standard" alt="JavaScript Style Guide">
+    <img src="https://cdn.rawgit.com/standard/standard/master/badge.svg" />
+  </a>
+</p>
+
 ## Features
  - Measures the load time of resources requested by the page
  - Measures the evaluation and compile time of the page's scripts
@@ -211,6 +217,12 @@ Expects the url/filename to load / evaluate / compile under the given amount of 
 expect(path | filename).to.be.built()
 ```
 Expectes the module on the path / with the given filename / module name to be built.
+
+## Testing
+Running the tests:
+```bash
+npm test
+```
 
 ## TODO
  - [x] Trace the browser's timeline
