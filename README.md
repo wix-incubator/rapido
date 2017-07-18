@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/standard/standard" alt="JavaScript Style Guide">
-    <img src="https://cdn.rawgit.com/standard/standard/master/badge.svg" />
+    <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   </a>
 </p>
 
