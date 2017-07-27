@@ -20,12 +20,13 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "memory-fs": "^0.4.1",
+    "nyc": "^11.0.3",
     "selenium-webdriver": "^3.4.0",
     "webpack": "^3.2.0",
     "wnpm-ci": "^6.2.46"
   },
   "scripts": {
-    "test": "mocha --timeout 5000",
+    "test": "nyc mocha --timeout 5000",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "repository": {
