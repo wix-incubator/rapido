@@ -121,7 +121,7 @@ const bjs = `
 const packageJson = JSON.stringify({
   name: 'rapido-webpack-test',
   version: '1.0.0',
-  main: 'b.js'
+  main: './b.js'
 }, null, 2)
 
 const sampleConfig = {
