@@ -24,7 +24,7 @@ describe('Webpack bundle size', function () {
     Rapido.webpack = webpack
   })
 
-  describe.only('stats parser', () => {
+  describe('stats parser', () => {
     it('should return the bundle sizes', function () {
       const { fs } = this
       sampleConfig.filesystem = fs
