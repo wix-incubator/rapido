@@ -6,6 +6,9 @@
   <a href="https://github.com/standard/standard" alt="JavaScript Style Guide">
     <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" />
   </a>
+  <a href="https://david-dm.org/wix/rapido" alt="Dependencies">
+    <img src="https://david-dm.org/wix/rapido.svg" />
+  </a>
 </p>
 
 > A site performance test kit, built using Chrome's DevTools.
@@ -15,6 +18,17 @@
  - Measures the evaluation and compile time of the page's scripts
  - Easy to use [Chai](http://chaijs.com) plugin for incorporating performance testing into your testing workflow
  - More to come!
+
+## Why though?
+Rapido was created in order to accomplish a number of goals:
+1. Measure JavaScript execution time in the browser easily
+2. Measure bundle size and build time easily
+3. Introduce a small-ish API for these things
+4. Have an ability to add tests for these to our testing workflow (and to our CI)
+5. Get raw numbers and not an overall score (like the one [Lighthouse](https://github.com/GoogleChrome/lighthouse) gives)
+
+## Okay, so why haven't you used \<insert similar project here\>?
+We have created Rapido because any other solution didn't suite us well, and because some of them (a lot) are more focused on performance for mobile, they didn't suite us even more.
 
 ## Install
 ```bash
@@ -218,11 +232,17 @@ expect(path | filename).to.be.built()
 ```
 Expectes the module on the path / with the given filename / module name to be built.
 
+## Contributing
+We would love to have more people help us squash bugs and improve Rapido! Please look in [CONTRIBUTING.md](https://github.com/wix/rapido/blob/master/CONTRIBUTING.md) if you would like to help us out :)
+
 ## Testing
 Running the tests:
 ```bash
 npm test
 ```
+
+## License
+Rapido is available under the [MIT](https://choosealicense.com/licenses/mit/) license.
 
 ## TODO
  - [x] Trace the browser's timeline
@@ -232,4 +252,6 @@ npm test
  - [x] Add Selenium WebDriver support
  - [x] Add support to get webpack bundle size
  - [ ] Add support to get file size from the network events
+ - [ ] Add better support to iframes (aka measure their net events too)
+ - [ ] Add support to browsers other than chrome
  - [ ] Add support for CSS parsing

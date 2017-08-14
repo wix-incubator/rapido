@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 'node'
+install:
+  - npm config set spin=false
+  - npm i
+script:
+  - npm run test:travis

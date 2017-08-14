@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "chai": "^4.0.2",
+    "coveralls": "^2.13.1",
     "eslint": "^4.1.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.6.0",
@@ -27,6 +28,7 @@
   },
   "scripts": {
     "test": "nyc mocha --timeout 5000",
+    "test:travis": "npm test && nyc report --reporter text-lcov | coveralls",
     "release": "wnpm-release --no-shrinkwrap"
   },
   "repository": {
@@ -41,6 +43,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/wix/rapido/issues"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ]
   },
   "homepage": "https://github.com/wix/rapido#readme",
   "publishConfig": {
